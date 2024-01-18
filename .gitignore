@@ -1,0 +1,4 @@
+.vscode
+.pylintrc
+*.sqlite3
+.venv
