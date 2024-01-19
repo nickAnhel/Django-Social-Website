@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
+from .confidential_data import GOOGLE_EMAIL, GOOGLE_PASSWORD
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -122,3 +123,15 @@ STATIC_URL = "static/"
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+# login settings
+LOGIN_REDIRECT_URL = "dashboard"
+LOGIN_URL = "login"
+LOGOUT_URL = "logout"
+
+# SMTP-server configuration (Simple Mail Transfer Protocol)
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_HOST_USER = GOOGLE_EMAIL
+EMAIL_HOST_PASSWORD = GOOGLE_PASSWORD
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True  # TLS - Transport Layer Security
