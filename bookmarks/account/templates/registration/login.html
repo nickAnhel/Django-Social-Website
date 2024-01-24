@@ -19,6 +19,12 @@
             <p><input type="submit" value="Log In"></p>
         </form>
         <p>
+            Don't have an account?
+            <a href="{% url "register" %}">
+                Sign Up
+            </a>
+        </p>
+        <p>
             <a href="{% url "password_reset" %}">
                 Forgotten your password?
             </a>
