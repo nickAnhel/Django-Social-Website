@@ -24,14 +24,29 @@
         <span class="user">
             {% if request.user.is_authenticated %}
                 Hello, {{ request.user.first_name|default:request.user.username }}
-                <a href="{% url "logout" %}">Logout</a>
+                <a href="{% url "logout" %}">Log Out</a>
             {% else %}
-                <a href="{% url "login" %}">Login</a>
+                <a href="{% url "login" %}">Log In</a>
             {% endif %}
         </span>
     </div>
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li class="{{ message.tags }}">
+                    {{ message|safe }}
+                    <a href="#" class="close">x</a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
     <div id="content">
         {% block content %}{% endblock content %}
     </div>
+
+    <script>
+        let close_btn = document.querySelector(".close")
+        close_btn.addEventListener("click", function() { close_btn.parentNode.remove() })
+    </script>
 </body>
 </html>

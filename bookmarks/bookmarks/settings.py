@@ -11,7 +11,13 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
+from environs import Env
+
 from .confidential_data import GOOGLE_EMAIL, GOOGLE_PASSWORD
+
+
+env = Env()
+env.read_env()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -21,7 +27,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-e&b3k^%otl*829ut)ba$@pw109@uzi_$pxennmo#jd7%!(61ls"
+SECRET_KEY = env("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -135,3 +141,7 @@ EMAIL_HOST_USER = GOOGLE_EMAIL
 EMAIL_HOST_PASSWORD = GOOGLE_PASSWORD
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True  # TLS - Transport Layer Security
+
+# Media settings
+MEDIA_URL = "media/"
+MEDIA_ROOT = BASE_DIR / "media"
