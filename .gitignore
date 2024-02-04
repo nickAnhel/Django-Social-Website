@@ -1,6 +1,8 @@
 .vscode
 .pylintrc
-*.sqlite3
 .venv
-confidential_data.py
 .env
+*.sqlite3
+media
+cert.crt
+cert.key
