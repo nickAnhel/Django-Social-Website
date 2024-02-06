@@ -94,7 +94,7 @@ SOCIAL_AUTH_PIPELINE = [
     "account.authentication.create_profile",
     "social_core.pipeline.social_auth.associate_user",
     "social_core.pipeline.social_auth.load_extra_data",
-    "social_core.pipeline.user.user_details",
+    # "social_core.pipeline.user.user_details",
 ]
 
 # Database
