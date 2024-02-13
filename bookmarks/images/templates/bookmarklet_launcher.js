@@ -7,6 +7,6 @@
     window.bookmarklet = true;
     }
     else {
-        bookmarkletLaunch();
+    bookmarkletLaunch();
     }
    })();

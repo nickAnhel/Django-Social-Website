@@ -11,11 +11,11 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
-from environs import Env
+import os
 
 
-env = Env()
-env.read_env()
+# env = Env()
+# env.read_env()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = env("SECRET_KEY")
+SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -157,8 +157,8 @@ LOGOUT_URL = "logout"
 
 # SMTP-server configuration (Simple Mail Transfer Protocol)
 EMAIL_HOST = "smtp.gmail.com"
-EMAIL_HOST_USER = env("GOOGLE_EMAIL")
-EMAIL_HOST_PASSWORD = env("GOOGLE_PASSWORD")
+EMAIL_HOST_USER = os.environ.get("GOOGLE_EMAIL")
+EMAIL_HOST_PASSWORD = os.environ.get("GOOGLE_PASSWORD")
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True  # TLS - Transport Layer Security
 
@@ -167,5 +167,5 @@ MEDIA_URL = "media/"
 MEDIA_ROOT = BASE_DIR / "media"
 
 # Google authentication settings
-SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = env("GOOGLE_OAUTH2_KEY")
-SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = env("GOOGLE_OAUTH2_SECRET")
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = os.environ.get("GOOGLE_OAUTH2_KEY")
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = os.environ.get("GOOGLE_OAUTH2_SECRET")
