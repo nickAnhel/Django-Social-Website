@@ -21,9 +21,12 @@ class Image(models.Model):
     description = models.TextField(blank=True)
     created = models.DateField(auto_now_add=True)
 
+    total_likes = models.PositiveIntegerField(default=0)
+
     class Meta:
         indexes = [
             models.Index(fields=["-created"]),
+            models.Index(fields=["-total_likes"])
         ]
         ordering = ["-created"]
 

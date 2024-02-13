@@ -30,10 +30,12 @@
         <div class="image-likes">
             {% for user in image.users_like.all %}
                 <div>
-                    {% if user.profile.photo %}
-                        <img src="{{ user.profile.photo.url }}" alt="{{ user.username }} profile photo">
-                    {% endif %}
-                    <p>{{ user.first_name }}</p>
+                    <a href="{{ user.get_absolute_url }}">
+                        {% if user.profile.photo %}
+                            <img src="{{ user.profile.photo.url }}" alt="{{ user.username }}'s profile photo">
+                        {% endif %}
+                        <p>{{ user.first_name|default:user.username }}</p>
+                    </a>
                 </div>
             {% empty %}
                 Nobody likes this image yet.
